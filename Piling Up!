@@ -1,0 +1,42 @@
+def solvetc():
+    block_count = int(input())
+    lengths = list(map(int, input().split(" ")))
+    if (len(lengths) != block_count):
+        return "No"
+        
+    left_pointer = 0
+    right_pointer = block_count - 1
+    top_of_pile = -1
+    
+    while(right_pointer - left_pointer > 0):
+        #print("left_pointer = " + str(left_pointer) + " and right_pointer = " + str(right_pointer))
+        candidate = -1
+        if(lengths[left_pointer] > lengths[right_pointer]):
+            candidate = lengths[left_pointer]
+            left_pointer += 1
+        else:
+            candidate = lengths[right_pointer]
+            right_pointer -= 1
+        
+        #print("candidate = " + str(candidate) + " and top_of_pile = " + str(top_of_pile))
+        
+        if(top_of_pile == -1): 
+            top_of_pile = candidate
+            continue
+        
+        if (candidate > top_of_pile):
+            return "No"
+        else:
+            top_of_pile = candidate
+            
+    #print("left_pointer = " + str(left_pointer) + " and right_pointer = " + str(right_pointer))
+    return "Yes"
+
+
+if __name__ == '__main__':
+    tc = int(input())
+    responses = []
+    for _ in range(tc):
+        responses.append(solvetc())
+    for r in responses:
+        print(r)
