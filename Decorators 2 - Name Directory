@@ -1,0 +1,11 @@
+
+
+def person_lister(f):
+    def inner(people):
+        data = sorted(people, key=lambda person: int(person[2]))
+        sorted_people = []
+        for person in data:
+            sorted_people.append(f(person))
+        return sorted_people
+    return inner
+
