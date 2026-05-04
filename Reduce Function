@@ -1,0 +1,6 @@
+
+
+def product(fracs):
+    t = reduce(Fraction.__mul__,fracs)
+    return t.numerator, t.denominator
+
